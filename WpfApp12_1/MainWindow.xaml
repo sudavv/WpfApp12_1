@@ -55,6 +55,106 @@
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </CheckBox.Template>
+        </CheckBox> 
+        <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="Box1" IsChecked="True">
+            <CheckBox.Template>
+                <ControlTemplate TargetType="CheckBox">
+                    <Grid Width="200">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>                            
+                        </Grid.RowDefinitions>
+                        <Rectangle Height="20" Width="20" Grid.Row="0"/>
+                        <Border BorderThickness="1" Grid.Row="0" Height="20" Width="20"  CornerRadius="5,5,5,5" BorderBrush="Gray"/>
+                        <Path StrokeThickness="2" HorizontalAlignment="Center" Stroke="Gray" Margin="0,0,0,0" x:Name="X" Opacity="0">
+                            <Path.Data>
+                                <PathGeometry>
+                                    <PathFigure StartPoint="1,4">
+                                        <LineSegment Point="15, 16"/>
+                                    </PathFigure>
+                                    <PathFigure StartPoint="1,16">
+                                        <LineSegment Point="15,4"/>
+                                    </PathFigure>
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+
+                        <Path Fill="Gray" HorizontalAlignment="Center" Margin="0,0,0,0" x:Name="O" Opacity="0">
+                            <Path.Data>                              
+                                    <EllipseGeometry Center="5,10" RadiusX="5" RadiusY="5"/>                             
+                            </Path.Data>
+                        </Path>
+                        
+                        <ContentPresenter x:Name="CheckBox" Content="UnChecked" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=Box1, Path=IsChecked}"
+                        Value="True">
+                            <Setter TargetName="X" Property="Opacity" Value="1"/>
+                            <Setter TargetName="CheckBox" Property="Content" Value="Checked"/>
+                        </DataTrigger>
+                        
+                        <DataTrigger Binding="{Binding ElementName=Box1, Path=IsChecked}"
+                        Value="{x:Null}">
+                            <Setter TargetName="CheckBox" Property="Content" Value="Indeterminate"/>
+                            <Setter TargetName="O" Property="Opacity" Value="1"/>
+                        </DataTrigger>                        
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </CheckBox.Template>
         </CheckBox>
+
+        <CheckBox HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="Box2" IsChecked="{x:Null}">
+            <CheckBox.Template>
+                <ControlTemplate TargetType="CheckBox">
+                    <Grid Width="200">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle Height="20" Width="20" Grid.Row="0"/>
+                        <Border BorderThickness="1" Grid.Row="0" Height="20" Width="20"  CornerRadius="5,5,5,5" BorderBrush="Gray"/>
+                        <Path StrokeThickness="2" HorizontalAlignment="Center" Stroke="Gray" Margin="0,0,0,0" x:Name="X" Opacity="0">
+                            <Path.Data>
+                                <PathGeometry>
+                                    <PathFigure StartPoint="1,4">
+                                        <LineSegment Point="15, 16"/>
+                                    </PathFigure>
+                                    <PathFigure StartPoint="1,16">
+                                        <LineSegment Point="15,4"/>
+                                    </PathFigure>
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+
+                        <Path Fill="Gray" HorizontalAlignment="Center" Margin="0,0,0,0" x:Name="O" Opacity="0">
+                            <Path.Data>
+                                <EllipseGeometry Center="5,10" RadiusX="5" RadiusY="5"/>
+                            </Path.Data>
+                        </Path>
+
+                        <ContentPresenter x:Name="CheckBox" Content="UnChecked" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=Box2, Path=IsChecked}"
+                        Value="True">
+                            <Setter TargetName="X" Property="Opacity" Value="1"/>
+                            <Setter TargetName="CheckBox" Property="Content" Value="Checked"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding ElementName=Box2, Path=IsChecked}"
+                        Value="{x:Null}">
+                            <Setter TargetName="CheckBox" Property="Content" Value="Indeterminate"/>
+                            <Setter TargetName="O" Property="Opacity" Value="1"/>
+                        </DataTrigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </CheckBox.Template>
+        </CheckBox>
+
     </Grid>
 </Window>
